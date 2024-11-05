@@ -15,47 +15,26 @@ const updatePhoto = async (req, res, next) => {
 }
 
 
-// const updateAndFindOne = async (req, res, next) => {
-//     try {
-//         let upd = await Itinerary.findOneAndUpdate(
-//             { _id: req.params.id },
-//             req.body,
-//             { new: true }
-//         )
-//         if (upd) {
-//             return res.status(200).json({
-//                 response: upd
-//             })
-//         } else {
-//             return res.status(404).json({
-//                 response: 'Not Found'
-//             })
-//         }
-//     } catch (error) {
-//         next(error)
-//     }
-// }
-const addActivityToItinerary = async (req, res, next) => {
+const updateAndFindOne = async (req, res, next) => {
     try {
-        // Actualiza el itinerario, añadiendo el nuevo ID de actividad al array
-        let updatedItinerary = await Itinerary.findByIdAndUpdate(
-            req.params.id, // ID del itinerario
-            { $push: { activities: req.body.activityId } }, // Añade el ID de la actividad al array
-            { new: true } // Devuelve el documento actualizado
-        ).populate('activities', ""); // Carga las actividades referenciadas
-
-        if (updatedItinerary) {
+        let upd = await Itinerary.findOneAndUpdate(
+            { _id: req.params.id },
+            req.body,
+            { new: true }
+        )
+        if (upd) {
             return res.status(200).json({
-                response: updatedItinerary
-            });
+                response: upd
+            })
         } else {
             return res.status(404).json({
-                response: 'Itinerario no encontrado'
-            });
+                response: 'Not Found'
+            })
         }
     } catch (error) {
-        next(error);
+        next(error)
     }
-};
+}
 
-export { updatePhoto, addActivityToItinerary }
+
+export { updatePhoto, updateAndFindOne }

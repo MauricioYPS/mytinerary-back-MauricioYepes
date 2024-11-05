@@ -11,7 +11,7 @@ let schema = new Schema({
     likes : {type: Number,required:true},
     hashtags : {type: Array,required:true},
     comments : {type: String,required:true},
-    activities: [{type: Schema.Types.ObjectId,ref:'Activities',required:true}]
+    activities: {type: Schema.Types.ObjectId,ref:'Activities',required:true}
 
 },
 {
