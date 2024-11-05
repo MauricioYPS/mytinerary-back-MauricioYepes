@@ -3,7 +3,9 @@ import '../../config/database.js'
 import Activity from "../Activity.js"
 
 
+
 let activities = [
+
     // Tokyo
     {
         name: "Visit the Tokyo Skytree",
@@ -112,5 +114,8 @@ let activities = [
         photo: "https://www.capetown.travel/wp-content/uploads/2022/06/Robben-Island.webp"
     }
 ];
+
+
+
 
 Activity.insertMany(activities)
