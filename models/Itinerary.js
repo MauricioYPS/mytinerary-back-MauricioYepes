@@ -2,14 +2,19 @@ import { Schema, model } from "mongoose";
 
 let collection = 'Itinerary'
 let schema = new Schema({
-    photo :{type: String,required:true},
+    namePerson :{type: String,required:true},
+    photoPerson :{type: String,required:true},
+    nameActivity :{type: String,required:true},
+    photoActivity :{type: String,required:true},
     price :{type: Number,required:true},
     duration :{type: Number,required:true},
     likes : {type: Number,required:true},
-    hashtags : {type: String,required:true},
+    hashtags : {type: Array,required:true},
     comments : {type: String,required:true},
+    activities: {type: Schema.Types.ObjectId,ref:'Activities',required:true}
 
-},{
+},
+{
     timestamps:true
 }
 )

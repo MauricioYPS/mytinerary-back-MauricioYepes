@@ -1,10 +1,10 @@
-import Itinerary from "../../models/Itinerary.js";
+import Activity from "../../models/Activity.js";
 
-const updatePhoto = async (req, res, next) => {
+const updateActivity = async (req, res, next) => {
     try {
-        await Itinerary.updateOne(
+        await Activity.updateOne(
             { _id: req.params.id },
-            { photo: req.body.photo }
+            { name: req.body.name }
         )
         return res.status(200).json({
             response: 'Updated'
@@ -14,10 +14,9 @@ const updatePhoto = async (req, res, next) => {
     }
 }
 
-
 const updateAndFindOne = async (req, res, next) => {
     try {
-        let upd = await Itinerary.findOneAndUpdate(
+        let upd = await Activity.findOneAndUpdate(
             { _id: req.params.id },
             req.body,
             { new: true }
@@ -36,5 +35,4 @@ const updateAndFindOne = async (req, res, next) => {
     }
 }
 
-
-export { updatePhoto, updateAndFindOne }
+export { updateActivity, updateAndFindOne }

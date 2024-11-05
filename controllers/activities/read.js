@@ -1,7 +1,6 @@
-import { response } from "express";
-import Cities from "../../models/City.js";
-import   "../../models/Itinerary.js";
-let allCities = async (req,res,next)=>{
+import Activity from "../../models/Activity.js";
+
+let allActivities = async (req,res,next) => {
     try {
 
         let {name} = req.query
@@ -11,7 +10,7 @@ let allCities = async (req,res,next)=>{
             query.name = {$regex: '^'+name, $options:'i'}
         }
         
-        let all = await Cities.find(query).populate('itinerary','').exec()
+        let all = await Activity.find(query)
         return res.status(200).json({
             response:all
         })
@@ -19,10 +18,11 @@ let allCities = async (req,res,next)=>{
         next(error)
     }
 }
-let citiesByID = async (req,res,next)=>{
+
+let activityByID = async (req,res,next) => {
     try {
-        let cityQ = req.params.id
-        let all = await Cities.find({_id : cityQ})
+        let activityQ = req.params.id
+        let all = await Activity.find({_id : activityQ})
         return res.status(200).json({
             response:all
         })
@@ -30,4 +30,5 @@ let citiesByID = async (req,res,next)=>{
         next(error)
     }
 }
-export {allCities,citiesByID}
+
+export {allActivities,activityByID}

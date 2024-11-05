@@ -1,4 +1,5 @@
 import Itinerary from "../../models/Itinerary.js";
+import   "../../models/Activity.js";
 
 let allItineraries = async (req,res,next) => {
 try {
@@ -9,7 +10,7 @@ try {
     if (activity){
         query.Itinerary = {$regex: '^'+activity, $options:'i'}
     }
-    let all = await Itinerary.find(query)
+    let all = await Itinerary.find(query).populate('activities','').exec()
     return res.status(200).json({
         response:all
     })
