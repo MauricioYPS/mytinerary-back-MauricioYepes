@@ -4,17 +4,11 @@ export default async (req, res, next) => {
     try {
         await User.findOneAndUpdate(
             { email: req.body.email },
-            { online: true }
+            { online: false }
         )
         return res.status(200).json({
             success: true,
-            message: 'Signed in',
-            user:{
-                email: req.user.email,
-                photoUrl : req.user.photoUrl,
-                country : req.user.country
-            },
-            token: req.token
+            message: 'Disconnected'
         })
     } catch (error) {
         next(error)
