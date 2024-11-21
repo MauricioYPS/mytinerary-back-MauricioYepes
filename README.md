@@ -8,7 +8,8 @@ npm install dotenv
 npm install mongoose
 npm i cors
 npm i morgan
-
+npm i jsonwebtoken
+npm install bcryptjs
 
 
 
