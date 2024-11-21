@@ -4,7 +4,6 @@ let allActivities = async (req,res,next) => {
     try {
 
         let {name} = req.query
-        console.log(name);
         let query = {}
         if (name){
             query.name = {$regex: '^'+name, $options:'i'}

@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { allItineraries, itinerariesByID, itinerariesByCity } from "../controllers/Itineraries/read.js";
-import { creat,creatMany } from "../controllers/Itineraries/create..js";
+import { creat,creatMany } from "../controllers/Itineraries/create.js";
 import { updatePhoto,updateAndFindOne  } from "../controllers/Itineraries/update.js";
 import { deleteOne } from "../controllers/Itineraries/delete.js";
 

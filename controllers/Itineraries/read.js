@@ -7,7 +7,6 @@ import { response } from "express";
 let allItineraries = async (req,res,next) => {
 try {
     let {activity} = req.query
-    console.log(activity);
     
     let query = {}
     if (activity){
