@@ -10,7 +10,8 @@
     "dataCities": "node ./models/data/cities.js",
     "dataItineraries": "node ./models/data/itineraries.js",
     "dataActivities": "node ./models/data/activities.js",
-    "dataUsers": "node ./models/data/users.js"
+    "dataUsers": "node ./models/data/users.js",
+    "dataCountries": "node ./models/data/countries.js"
   },
   "keywords": [],
   "author": "",

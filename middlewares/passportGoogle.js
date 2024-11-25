@@ -1,6 +1,7 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy } from "passport-google-oauth20";
 import User from "../models/User.js";
+import bcryptjs from "bcryptjs"
 
 
 export default passport.use(
@@ -11,11 +12,13 @@ export default passport.use(
             callbackURL: process.env.GOOGLE_URI_BACK
         },
         async (accesToken, refreshToken, profile, done) => {
-            console.log(profile);
-            
+
             try {
                 let user = await User.findOne({ email: profile.emails[0].value })
                 if (!user) {
+                    let hashPassword = bcryptjs.hashSync(
+                        profile.id + profile.emails[0].value,
+                        10)
 
                     user = new User({
                         name: profile.name.givenName,
@@ -24,7 +27,7 @@ export default passport.use(
                         photoUrl: profile.photos[0].value,
                         country: 'country',
                         online: false,
-                        password: profile.id
+                        password: hashPassword
                     })
                     await user.save()
                 }
@@ -35,6 +38,6 @@ export default passport.use(
             }
 
         }
-)
+    )
 
 )
