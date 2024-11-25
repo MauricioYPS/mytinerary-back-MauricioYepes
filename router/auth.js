@@ -6,6 +6,7 @@ import generateToken from "../middlewares/generateToken.js";
 import signOut from "../controllers/auth/signOut.js";
 import passport from "../middlewares/passport.js";
 import passportGoogle from "../middlewares/passportGoogle.js";
+import signInGoogle from "../controllers/auth/signInGoogle.js";
 
 
 const routerAuth = Router()
@@ -19,7 +20,7 @@ routerAuth.get('/signIn/google',
 
 routerAuth.get('/signIn/google/callback',
     passportGoogle.authenticate('google', { session: false, failureRedirect: '/login' }),generateToken,
-        signIn)
+        signInGoogle)
 
 
 
