@@ -23,4 +23,18 @@ let userByID = async (req, res, next) => {
     }
 }
 
-export { allUsers, userByID }
+let oneUser = async (req, res, next) => {
+try {
+    let doc = await User.findOne(req.user)
+    return res.status(200).json({
+        response: doc
+    })
+} catch (error) {
+    return res.status(404).json({
+        response: 'Not Found'
+    })
+}
+}
+
+
+export { allUsers, userByID,oneUser }
